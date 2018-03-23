@@ -1,0 +1,12 @@
+ exportarPDF() {
+      this.loadingBaixarPDF = true;
+      this._contabilizacaoService.baixarQuadroFipSusep(this.retorno, 'PDF', this.nomeMes, this.ano, '14C').subscribe(res => {
+        if (res) {
+          saveAs(res, "Quadro 14C.pdf")
+        }
+        this.loadingBaixarPDF = false;
+      }, (err) => {
+        this.loadingBaixarPDF = false;
+        console.log(err)
+      });
+    }
